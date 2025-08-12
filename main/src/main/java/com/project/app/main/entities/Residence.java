@@ -24,6 +24,7 @@ public class Residence {
     private Integer houseNumber;
     private String neighboorhood;
     private String city;
+    private String complement;
     private State state;
 
 }
