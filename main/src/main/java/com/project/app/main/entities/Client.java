@@ -28,5 +28,5 @@ public class Client {
     private String email;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Residence> residences;
+    private List<Location> locations;
 }
