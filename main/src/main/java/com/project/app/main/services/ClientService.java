@@ -29,4 +29,25 @@ public class ClientService {
         repository.save(newCLient);
         return newCLient;
     }
+
+    public Client updateClient(Long clientId, ClientDto update){
+        Client client = repository.findById(clientId).get();
+        if (!update.getCpf().isEmpty()){
+            client.setCpf(update.getCpf());
+        }
+        if (update.getNome().isEmpty()){
+            client.setNome(update.getNome());
+        }
+        if(!update.getEmail().isEmpty()){
+            client.setEmail(update.getEmail());
+        }
+        repository.save(client);
+        return client;
+    }
+
+    public String deleteClient(Long clientId){
+        Client client = repository.findById(clientId).get();
+        repository.delete(client);
+        return "client deletado com sucesso!";
+    }
 }
