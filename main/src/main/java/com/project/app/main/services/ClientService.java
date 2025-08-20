@@ -21,7 +21,8 @@ public class ClientService {
 
     public Client registerClient(ClientDto dto){
         Client newCLient = Client.builder()
-                .nome(dto.getNome())
+                //removes the blank spaces between the name
+                .nome(dto.getNome().replaceAll("\\s+", ""))
                 .cpf(dto.getCpf())
                 .email(dto.getEmail())
                 .locations(new ArrayList<>())
