@@ -2,6 +2,8 @@ package com.project.app.main.services;
 
 import com.project.app.main.dtos.ClientDto;
 import com.project.app.main.entities.Client;
+import com.project.app.main.exceptions.BadRequestException;
+import com.project.app.main.exceptions.NotFoundException;
 import com.project.app.main.repositories.ClientRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class ClientService {
     }
 
     public Client registerClient(ClientDto dto){
+        if(dto.getCpf() == null || dto.getEmail() == null || dto.getNome() == null){
+            throw new BadRequestException("por favor, preencha todos os dados do cliente!");
+        }
         Client newCLient = Client.builder()
                 //removes the blank spaces between the name
                 .nome(dto.getNome().replaceAll("\\s+", ""))
@@ -32,7 +37,11 @@ public class ClientService {
     }
 
     public Client updateClient(Long clientId, ClientDto update){
-        Client client = repository.findById(clientId).get();
+        if(clientId == null){
+            throw new BadRequestException("por favor, informe um Id válido");
+        }
+        Client client = repository.findById(clientId).
+                orElseThrow( () -> new NotFoundException("não foi possível encontrar um cliente com esse id"));
         if (!update.getCpf().isEmpty()){
             client.setCpf(update.getCpf());
         }
@@ -47,7 +56,8 @@ public class ClientService {
     }
 
     public String deleteClient(Long clientId){
-        Client client = repository.findById(clientId).get();
+        Client client = repository.findById(clientId).
+                orElseThrow( () -> new NotFoundException("não foi possível encontrar um cliente com esse id"));
         repository.delete(client);
         return "client deletado com sucesso!";
     }
