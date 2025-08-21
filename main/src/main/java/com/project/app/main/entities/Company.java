@@ -22,6 +22,8 @@ public class Company {
     @CNPJ
     private String cnpj;
 
+    private String email;
+
     @OneToOne
     private Location location;
 
