@@ -3,6 +3,7 @@ package com.project.app.main.entities;
 import com.project.app.main.enums.CompanyType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CNPJ;
@@ -12,6 +13,7 @@ import org.hibernate.validator.constraints.br.CNPJ;
 @NoArgsConstructor
 @Entity
 @Table(name = "companies")
+@Builder
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
