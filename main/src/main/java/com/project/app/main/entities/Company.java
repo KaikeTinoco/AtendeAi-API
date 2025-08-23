@@ -29,6 +29,8 @@ public class Company {
     @OneToOne
     private Location location;
 
+    private String telefone;
+
     private CompanyType type;
 }
 

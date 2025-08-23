@@ -24,8 +24,11 @@ public class Client {
 
     @CPF
     private String cpf;
+
     @Email
     private String email;
+
+    private String telefone;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Location> locations;
