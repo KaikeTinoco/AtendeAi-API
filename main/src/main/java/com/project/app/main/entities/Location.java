@@ -21,8 +21,8 @@ public class Location {
     private Client owner;
 
     private String street;
-    private Integer houseNumber;
-    private String neighboorhood;
+    private int houseNumber;
+    private String neighborhood;
     private String city;
     private String complement;
     private State state;
