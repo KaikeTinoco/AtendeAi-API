@@ -2,22 +2,17 @@ package com.project.app.main.entities;
 
 import com.project.app.main.enums.CompanyType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.validator.constraints.br.CNPJ;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "companies")
 @Builder
-public class Company {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Company extends Owner{
 
     private String name;
 
@@ -25,9 +20,6 @@ public class Company {
     private String cnpj;
 
     private String email;
-
-    @OneToOne
-    private Location location;
 
     private String telefone;
 
