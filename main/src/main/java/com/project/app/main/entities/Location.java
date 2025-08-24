@@ -18,7 +18,8 @@ public class Location {
     private Long id;
 
     @ManyToOne
-    private Client owner;
+    @JoinColumn(name = "owner_id")
+    private Owner owner;
 
     private String street;
     private int houseNumber;

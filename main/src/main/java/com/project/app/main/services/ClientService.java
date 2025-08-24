@@ -31,7 +31,6 @@ public class ClientService {
                 .nome(dto.getNome().replaceAll("\\s+", ""))
                 .cpf(dto.getCpf())
                 .email(dto.getEmail())
-                .locations(new ArrayList<>())
                 .build();
         repository.save(newCLient);
         return newCLient;
