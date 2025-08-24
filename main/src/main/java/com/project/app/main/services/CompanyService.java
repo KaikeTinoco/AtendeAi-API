@@ -8,6 +8,7 @@ import com.project.app.main.repositories.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -52,13 +53,27 @@ public class CompanyService {
 
     public String deleteCompany(Long companyId){
         if (companyId == null) {
-            throw new BadRequestException("por favor informe o id da empresa a ser atualizada!");
+            throw new BadRequestException("por favor informe o id da empresa a ser deletada!");
         }
         Company company = repository.findById(companyId).orElseThrow(
                 () -> new NotFoundException("não foi possível encontrar uma empresa com id: " + companyId)
         );
         repository.delete(company);
         return "deletado com sucesso!";
+    }
+
+    public Company findCompanyById(Long companyId){
+        if (companyId == null) {
+            throw new BadRequestException("por favor informe o id da empresa");
+        }
+        Company company = repository.findById(companyId).orElseThrow(
+                () -> new NotFoundException("não foi possível encontrar uma empresa com id: " + companyId)
+        );
+        return company;
+    }
+
+    public List<Company> findAllCompanies (){
+        return repository.findAll();
     }
 
 
