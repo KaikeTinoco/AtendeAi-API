@@ -3,6 +3,7 @@ package com.project.app.main.entities;
 import com.project.app.main.enums.CompanyType;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.validator.constraints.br.CNPJ;
 
 @EqualsAndHashCode(callSuper = true)
@@ -10,18 +11,10 @@ import org.hibernate.validator.constraints.br.CNPJ;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "companies")
-@Builder
+@SuperBuilder
 public class Company extends Owner{
-
-    private String name;
-
     @CNPJ
     private String cnpj;
-
-    private String email;
-
-    private String telefone;
 
     private CompanyType type;
 }
