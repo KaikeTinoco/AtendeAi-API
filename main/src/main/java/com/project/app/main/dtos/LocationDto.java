@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @Builder
 public class LocationDto {
-    private Long ownerDocument;
+    private Long ownerId;
     private String street;
     private int houseNumber;
     private String neighborhood;
