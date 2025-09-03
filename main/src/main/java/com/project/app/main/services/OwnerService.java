@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -85,14 +86,27 @@ public class OwnerService {
 
     }
 
-    public String deleteOwner(Long ownerId){
-        if(ownerId == null){
+    public String deleteOwner(Long ownerId) {
+        if (ownerId == null) {
             throw new BadRequestException("Por favor informe um Id válido");
         }
         Owner owner = repository.findById(ownerId).orElseThrow(
-                ()-> new NotFoundException("Não foi possível encontrar um dono com id:" + ownerId)
+                () -> new NotFoundException("Não foi possível encontrar um dono com id:" + ownerId)
         );
         repository.delete(owner);
         return "Dono deletado com sucesso!";
+    }
+
+    public List<Owner> findAll(){
+        return repository.findAll();
+    }
+    public Owner findOwnerById(Long ownerId){
+        if (ownerId == null) {
+            throw new BadRequestException("Por favor informe um Id válido");
+        }
+        Owner owner = repository.findById(ownerId).orElseThrow(
+                () -> new NotFoundException("Não foi possível encontrar um dono com id:" + ownerId)
+        );
+        return owner;
     }
 }
