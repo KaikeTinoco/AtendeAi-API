@@ -34,6 +34,12 @@ public abstract class Owner {
 
     private String phone;
 
+    public void addLocation(Location location){
+        this.locations.add(location);
+    }
 
+    public void removeLocation(Location location){
+        this.locations.remove(location);
+    }
 
 }
