@@ -108,4 +108,8 @@ public class OwnerService {
         );
         return owner;
     }
+
+    public void saveOwner(Owner owner){
+        repository.save(owner);
+    }
 }
