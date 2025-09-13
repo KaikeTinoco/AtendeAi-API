@@ -34,12 +34,19 @@ public abstract class Owner {
 
     private String phone;
 
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ChatOverview> chatOverviews;
+
     public void addLocation(Location location){
         this.locations.add(location);
     }
 
     public void removeLocation(Location location){
         this.locations.remove(location);
+    }
+
+    public void addChatOverview(ChatOverview chatOverview){
+        this.chatOverviews.add(chatOverview);
     }
 
 }
