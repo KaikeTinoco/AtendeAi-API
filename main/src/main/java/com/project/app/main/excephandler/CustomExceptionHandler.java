@@ -2,6 +2,7 @@ package com.project.app.main.excephandler;
 
 import com.project.app.main.dtos.ErrorResponseDto;
 import com.project.app.main.exceptions.BadRequestException;
+import com.project.app.main.exceptions.EmptyListException;
 import com.project.app.main.exceptions.NotFoundException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpHeaders;
@@ -30,6 +31,15 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler
     public ResponseEntity<?> handleBadRequestException(BadRequestException e){
+        ErrorResponseDto dto = ErrorResponseDto.builder()
+                .statusCode(HttpStatus.BAD_REQUEST.value())
+                .message(e.getMessage())
+                .build();
+        return new ResponseEntity<>(dto, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<?> handleBadRequestException(EmptyListException e){
         ErrorResponseDto dto = ErrorResponseDto.builder()
                 .statusCode(HttpStatus.BAD_REQUEST.value())
                 .message(e.getMessage())
