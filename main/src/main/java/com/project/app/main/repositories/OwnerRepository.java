@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface OwnerRepository extends JpaRepository<Owner, Long> {
     Optional<Owner> findById(Long id);
-    Optional<Owner> findByNome(String nome);
+    Optional<Owner> findByName(String nome);
     Optional<Owner> findByEmail(String email);
     Optional<Owner> findByPhone(String phone);
 }
