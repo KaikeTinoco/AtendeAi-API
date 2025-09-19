@@ -22,10 +22,7 @@ public class ClientController {
         this.service = service;
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<Client> registerClient(@RequestBody ClientDto dto){
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.registerClient(dto));
-    }
+
 
 
     @DeleteMapping("/delete")
@@ -33,11 +30,7 @@ public class ClientController {
         return ResponseEntity.ok(service.deleteClient(id));
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<Client> updateClient(@RequestBody ClientDto dto,
-                                               @RequestParam Long clientId){
-        return ResponseEntity.ok(service.updateClient(clientId, dto));
-    }
+
 
     @GetMapping("/findById")
     public ResponseEntity<Client> findClientById(@RequestParam Long clientId){

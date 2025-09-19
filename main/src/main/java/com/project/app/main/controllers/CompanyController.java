@@ -22,16 +22,6 @@ public class CompanyController {
         this.service = service;
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<Company> registerCompany(@RequestBody CompanyDto dto){
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.registerCompany(dto));
-    }
-
-    @PutMapping("/update")
-    public ResponseEntity<Company> updateCompany(@RequestBody CompanyDto dto,
-                                                 @RequestParam Long companyId){
-        return ResponseEntity.ok(service.updateCompany(companyId, dto));
-    }
 
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteCompany(@RequestParam Long companyId){
