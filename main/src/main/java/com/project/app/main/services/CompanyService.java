@@ -45,5 +45,9 @@ public class CompanyService {
         return repository.findAll();
     }
 
+    public void saveCompany(Company company){
+        repository.save(company);
+    }
+
 
 }

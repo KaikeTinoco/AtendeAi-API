@@ -44,4 +44,7 @@ public class ClientService {
         return repository.findAll();
     }
 
+    public void saveCompany(Client newClient) {
+        repository.save(newClient);
+    }
 }

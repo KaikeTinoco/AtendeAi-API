@@ -41,7 +41,7 @@ public class OwnerService {
                     .locations(new ArrayList<>())
                     .cpf(dto.getCpf())
                     .build();
-            repository.save(newClient);
+            clientService.saveCompany(newClient);
             return newClient;
 
         } else if (dto.getCnpj() != null) {
@@ -52,7 +52,7 @@ public class OwnerService {
                     .locations(new ArrayList<>())
                     .cnpj(dto.getCnpj())
                     .build();
-            repository.save(newCompany);
+            companyService.saveCompany(newCompany);
             return newCompany;
 
         } else {
@@ -65,6 +65,7 @@ public class OwnerService {
         if(ownerId == null){
             throw new BadRequestException("Por favor informe um Id válido");
         }
+
         if(dto.getCpf() == null){
             Company company = companyService.findCompanyById(ownerId);
             Optional.ofNullable(dto.getName()).ifPresent(company::setName);
