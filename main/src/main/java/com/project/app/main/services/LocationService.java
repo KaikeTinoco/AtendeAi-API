@@ -37,12 +37,12 @@ public class LocationService {
                         + dto.getOwnerId()));
 
         Location newLocation = Location.builder()
-                .city(dto.getCity())
+                .city(dto.getCity().replaceAll(" ", "_"))
                 .state(dto.getState())
-                .complement(dto.getComplement())
+                .complement(dto.getComplement().replaceAll(" ", "_"))
                 .houseNumber(dto.getHouseNumber())
-                .street(dto.getStreet())
-                .neighborhood(dto.getNeighborhood())
+                .street(dto.getStreet().replaceAll(" ", "_"))
+                .neighborhood(dto.getNeighborhood().replaceAll(" ", "_"))
                 .owner(owner)
                 .build();
 

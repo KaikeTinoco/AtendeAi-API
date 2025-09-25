@@ -35,8 +35,8 @@ public class OwnerService {
 
         if (dto.getCpf() != null) {
             Client newClient = Client.builder()
-                    .phone(dto.getPhone())
-                    .name(dto.getName())
+                    .phone(dto.getPhone().strip())
+                    .name(dto.getName().replaceAll(" ", "_"))
                     .email(dto.getEmail())
                     .locations(new ArrayList<>())
                     .cpf(dto.getCpf())
