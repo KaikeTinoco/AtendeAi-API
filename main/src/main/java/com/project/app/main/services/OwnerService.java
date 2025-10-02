@@ -36,8 +36,8 @@ public class OwnerService {
         if (dto.getCpf() != null) {
             Client newClient = Client.builder()
                     .phone(dto.getPhone().strip())
-                    .name(dto.getName().replaceAll(" ", "_"))
-                    .email(dto.getEmail())
+                    .name(dto.getName().replaceAll(" ", "_").toLowerCase())
+                    .email(dto.getEmail().toLowerCase().strip())
                     .locations(new ArrayList<>())
                     .cpf(dto.getCpf())
                     .build();
@@ -47,8 +47,8 @@ public class OwnerService {
         } else if (dto.getCnpj() != null) {
             Company newCompany = Company.builder()
                     .phone(dto.getPhone())
-                    .name(dto.getName())
-                    .email(dto.getEmail())
+                    .name(dto.getName().toLowerCase().replaceAll(" ", "_"))
+                    .email(dto.getEmail().strip().toLowerCase())
                     .locations(new ArrayList<>())
                     .cnpj(dto.getCnpj())
                     .build();

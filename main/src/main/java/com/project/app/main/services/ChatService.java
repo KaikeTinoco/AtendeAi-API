@@ -32,8 +32,8 @@ public class ChatService {
         ChatOverview newChat = ChatOverview.builder()
                 .owner(owner)
                 .rating(dto.getRating())
-                .nextSugestedAction(dto.getNextSugestedAction())
-                .overview(dto.getOverview())
+                .nextSugestedAction(dto.getNextSugestedAction().toLowerCase())
+                .overview(dto.getOverview().toLowerCase())
                 .build();
         repository.save(newChat);
         ownerService.saveOwner(owner);
