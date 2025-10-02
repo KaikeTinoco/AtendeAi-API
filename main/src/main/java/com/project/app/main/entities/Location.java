@@ -1,5 +1,7 @@
 package com.project.app.main.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.project.app.main.enums.State;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -18,6 +20,7 @@ public class Location {
     private Long id;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
