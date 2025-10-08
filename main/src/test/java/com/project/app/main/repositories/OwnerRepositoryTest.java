@@ -64,10 +64,27 @@ class OwnerRepositoryTest {
 
     @Test
     void findByEmail() {
-
+        Client c = client;
+        repository.save(c);
+        Owner foundOwner = repository.findByEmail("email@gmail.com")
+                .orElseThrow(()-> new NotFoundException("Não foi possível encotrar um usuário com esse email"));
+        assertEquals(foundOwner.getName(), c.getName());
+        assertEquals(foundOwner.getEmail(), c.getEmail());
+        assertEquals(foundOwner.getPhone(), c.getPhone());
+        assertEquals(foundOwner.getLocations(), c.getLocations());
+        assertEquals(foundOwner.getChatOverviews(), c.getChatOverviews());
     }
 
     @Test
     void findByPhone() {
+        Client c = client;
+        repository.save(c);
+        Owner foundOwner = repository.findByPhone("12345678900")
+                .orElseThrow(()-> new NotFoundException("Não foi possível encotrar um usuário com esse telefone"));
+        assertEquals(foundOwner.getName(), c.getName());
+        assertEquals(foundOwner.getEmail(), c.getEmail());
+        assertEquals(foundOwner.getPhone(), c.getPhone());
+        assertEquals(foundOwner.getLocations(), c.getLocations());
+        assertEquals(foundOwner.getChatOverviews(), c.getChatOverviews());
     }
 }
